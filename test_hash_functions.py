@@ -1,5 +1,4 @@
 import unittest
-import math
 import random
 import hash_functions as hf
 
@@ -23,9 +22,29 @@ class Test_Hash_Functions(unittest.TestCase):
         with self.assertRaises(ValueError):
             hf.h_ascii(None, random.randint(1, 100))
 
-    def test_h_ascii_wrong_type(self):
+    def test_h_ascii_integer(self):
+        self.assertEqual(hf.h_ascii('13', 200), 99)
+
+    def test_h_rolling_basic(self):
+        self.assertEqual(hf.h_rolling('test', 500), 238)
+
+    def test_h_rolling_small_array(self):
+        self.assertEqual(hf.h_rolling('test', 25), 13)
+
+    def test_h_rolling_empty_string(self):
         with self.assertRaises(ValueError):
-            hf.h_ascii(13, random.randint(1, 100))
+            hf.h_rolling('', random.randint(1, 100))
+
+    def test_h_rolling_bad_array(self):
+        with self.assertRaises(ValueError):
+            hf.h_rolling('test', random.randint(0, -100))
+
+    def test_h_rolling_none_string(self):
+        with self.assertRaises(ValueError):
+            hf.h_rolling(None, random.randint(1, 100))
+
+    def test_h_rolling_integer(self):
+        self.assertEqual(hf.h_rolling('13', 100), 30)
 
 
 if __name__ == '__main__':

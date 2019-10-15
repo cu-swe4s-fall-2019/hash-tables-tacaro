@@ -1,11 +1,17 @@
 
 def h_ascii(key, N):
-    if key == '':
-        raise ValueError("Empty string supplied")
     if key is None:
         raise ValueError("Key cannot be None")
+    try:
+        key = str(key)
+    except TypeError:
+        print("Cannot convert the key to a string")
+        sys.exit(1)
+    if key == '':
+        raise ValueError("Empty string supplied")
     if N <= 0:
         raise ValueError("Size of array must be positive integer")
+
     str_val = 0
     output = 0
     for char in key:
@@ -20,4 +26,31 @@ def h_ascii(key, N):
 
 
 def h_rolling(key, N):
-    pass
+    if key is None:
+        raise ValueError("Key cannot be None")
+    try:
+        key = str(key)
+    except TypeError:
+        print("Cannot convert the key to a string")
+        sys.exit(1)
+    if key == '':
+        raise ValueError("Empty string supplied")
+    if key is None:
+        raise ValueError("Key cannot be None")
+    if N <= 0:
+        raise ValueError("Size of array must be positive integer")
+
+    H = 0
+    k = len(key) - 1
+    for char in key:
+        c = ord(char)
+        H = H + (c*(31**(k)))  # multiply char value by 31 raised to the count
+        k += 1
+    H = H % N  # modulo for size
+    if H > N:
+        H = H - 1
+    elif H == N:
+        H = H - 1
+    elif H > N:
+        H = H - (H - N) - 1
+    return H
