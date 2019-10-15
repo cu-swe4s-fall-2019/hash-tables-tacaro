@@ -46,6 +46,23 @@ class Test_Hash_Functions(unittest.TestCase):
     def test_h_rolling_integer(self):
         self.assertEqual(hf.h_rolling('13', 100), 30)
 
+    def test_fletcher64_basic(self):
+        self.assertEqual(hf.h_fletcher64('a'), 416611827809)
+
+    def test_fletcher64_basic2(self):
+        self.assertEqual(hf.h_fletcher64('fletcher_test'), 41210211206508)
+
+    def test_fletcher64__empty_string(self):
+        with self.assertRaises(ValueError):
+            hf.h_fletcher64('')
+
+    def test_h_rolling_none_string(self):
+        with self.assertRaises(ValueError):
+            hf.h_fletcher64(None)
+
+    def test_h_rolling_integer(self):
+        self.assertEqual(hf.h_fletcher64('13'), 639950127204)
+
 
 if __name__ == '__main__':
     unittest.main()
