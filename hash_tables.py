@@ -1,5 +1,4 @@
 import hash_functions
-import numpy as np
 
 
 class LinearProbe:
