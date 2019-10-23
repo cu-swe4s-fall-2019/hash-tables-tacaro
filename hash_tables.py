@@ -74,21 +74,32 @@ class ChainedHash:
         self.hash_fucntion = hash_fucntion
         self.N = N
         self.table = [[]]*N  # create emtpy list of lists with N elements
+        self.M = 0
 
     def add(self, key, value):
         start_hash = self.hash_fucntion(key, self.N)
+        self.table[start_hash].extend((key, value))
+        self.M += 1
+        return True
+        '''
         for i in range(self.N):
             query = (start_hash + i) % self.N
             if self.table[query] is None:
                 self.table[query] = (key, value)
                 return True
         return False
+        '''
 
     def search(self, key):
         start_hash = self.hash_fucntion(key, self.N)
+        for k, v in self.table[start_hash]:
+            if key == k:
+                return v
+        '''
         for i in range(self.N):
             query = (start_hash + i) % self.N
             if self.T[query] is None:
                 return None
             if self.T[query][0] == key:
                 return self.T[query][1]
+        '''
