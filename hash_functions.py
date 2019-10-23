@@ -58,7 +58,7 @@ def h_rolling(key, N):
     return H
 
 
-def h_fletcher64(key):
+def h_fletcher64(key, N):
     if key is None:
         raise ValueError("Key cannot be None")
     try:
