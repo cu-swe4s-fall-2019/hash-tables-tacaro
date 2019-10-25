@@ -4,6 +4,7 @@ import argparse
 import matplotlib.pyplot as plt
 matplotlib.use('Agg')
 
+
 def main():
     parser = argparse.ArgumentParser(
         description='Generate scatter from stdin',
