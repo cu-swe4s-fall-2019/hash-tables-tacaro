@@ -1,6 +1,3 @@
-import hashlib
-
-
 def h_ascii(key, N):
     if key is None:
         raise ValueError("Key cannot be None")
