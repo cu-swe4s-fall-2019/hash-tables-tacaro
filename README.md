@@ -24,9 +24,47 @@ Please note the directory:
 
 - img: contains images referenced in benchmarking.
 
-## Methods
+## Hash Functions
 
-## Installation
+As hash functions, I implemented `h_ascii`, `h_rolling`, and `h_fletcher64`.
+
+### Ascii hashing
+
+Parses strings based on their ascii values and direcly assigns hash index. Relies on python function `ord()`.
+
+### Rolling hash
+
+Assigns a rolling hash based on ascii values. Relies on python function `ord()`.
+
+### Fletcher 64 Checksum [Extra Credit Assignment]
+
+Fletcher's checksum (<https://en.wikipedia.org/wiki/Fletcher%27s_checksum>) is an algorithm for computing a position-dependent checksum. It was developed by John Fletcher at Lawrence Livermore National Labs. Fletcher-64 divides a data word into two 32-bit blocks. Two 32-bit sums result and are combined into a 64-bit Fletcher checksum. The second sum is multiplied by 2^32 and added to the simple checksum. The modulus of 4,294,967,295 is applied.
+
+An important weakness to note is that the Fletcher checksum cannot distinguish between blocks of all zeros and blocks of all 1 bits.
+
+## Hash Tables & Collision Resolution
+
+Three methods of collision resolution are used
+
+1. Chain Hashing
+2. Linear Probing
+3. Quadratic Probing [Extra Credit Assignment]
+
+### Chain Hashing
+
+Involves the creation of nested lists at hash indices where a collision occurs.
+
+### Linear Probing
+
+When a collision occurs, the key, value pair is appended wherever the next empty slot exists. Proceeds linearly.
+
+### Quadratic Probing
+
+When a collision occurs, the key, value pair is appended wherever the next empty slot exists. Proceeds according to a quadratic function. `query = (hash_slot + i**k) % self.N` where the exponent k increases incrementally.
+
+![Image](img/ascii_func_non_rand.png) Ascii, non random words ![Image](img/ascii_func_rand.png) Ascii, random words ![Image](img/fletcher64_func_rand.png) Fletcher64 checksum, random words ![Image](img/fletcher64_func_non_rand.png) Fletcher64 checksum, non_random words. ![Image](img/non_rand_words_rolling.png) Non random words, rolling hash. ![Image](img/rand_words_ascii_CH.png) Random words, ascii, chained hash. ![Image](img/rand_words_ascii.png) Random words, ascii ![Image](img/rand_words_rolling.png) Random words, rolling_hash
+
+### Installation
 
 The following builtin python libraries are used:
 
