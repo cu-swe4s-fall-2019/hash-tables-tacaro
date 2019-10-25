@@ -62,6 +62,8 @@ When a collision occurs, the key, value pair is appended wherever the next empty
 
 When a collision occurs, the key, value pair is appended wherever the next empty slot exists. Proceeds according to a quadratic function. `query = (hash_slot + i**k) % self.N` where the exponent k increases incrementally.
 
+## Results
+
 ![Image](img/ascii_func_non_rand.png) Ascii, non random words ![Image](img/ascii_func_rand.png) Ascii, random words ![Image](img/fletcher64_func_rand.png) Fletcher64 checksum, random words ![Image](img/fletcher64_func_non_rand.png) Fletcher64 checksum, non_random words. ![Image](img/non_rand_words_rolling.png) Non random words, rolling hash. ![Image](img/rand_words_ascii_CH.png) Random words, ascii, chained hash. ![Image](img/rand_words_ascii.png) Random words, ascii ![Image](img/rand_words_rolling.png) Random words, rolling_hash
 
 ### Installation
