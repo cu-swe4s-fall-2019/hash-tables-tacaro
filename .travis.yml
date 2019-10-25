@@ -11,11 +11,9 @@ before_install:
     - conda install -y pycodestyle
     - conda install --yes python=3.6
     - conda install -y matplotlib
-    
-      
+
+
 script:
-    - python tests.py
-    - bash fxn_test.sh
     - pycodestyle data_viz.py
     - pycodestyle math_lib.py
     - pycodestyle get_data.py
