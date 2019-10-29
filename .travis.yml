@@ -14,8 +14,8 @@ before_install:
 
 
 script:
-    - pycodestyle data_viz.py
-    - pycodestyle math_lib.py
-    - pycodestyle get_data.py
-    - pycodestyle plot_gtex.py
-    - pycodestyle tests.py
+    - pycodestyle hash_functions.py
+    - pycodestyle hash_tables.py
+    - pycodestyle test_hash_functions.py
+    - pycodestyle test_hash_tables.py
+
