@@ -1,8 +1,8 @@
-import hash_functions
 import sys
 import time
 import random
 import os
+from . import hash_functions
 
 
 def reservoir_sampling(new_val, size, V):
@@ -19,12 +19,14 @@ class LinearProbe:
         self.hash_fucntion = hash_fucntion
         self.N = N
         self.table = [None] * N
+        self.keys = []
 
     def add(self, key, value):
         start_hash = self.hash_fucntion(key, self.N)
         hash_slot = start_hash
         if self.table[start_hash] is None:
             self.table[start_hash] = (key, value)
+            self.keys[start_hash] = key
         else:
             for i in range(self.N):
                 query = (hash_slot + i) % self.N
