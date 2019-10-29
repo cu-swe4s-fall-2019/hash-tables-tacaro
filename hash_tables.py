@@ -1,3 +1,4 @@
+from . import hash_functions
 import sys
 import time
 import random
